@@ -14,7 +14,7 @@ const __dirname = path.resolve();
 app.use(
   cors({
     origin:
-      process.env.NODE_ENV === "development"
+      process.env.NODE_ENV === "production"
         ? "https://product-management-d8ctc7ecgpg6huf5.southeastasia-01.azurewebsites.net/" // <-- Replace with your deployed frontend URL
         : "http://localhost:5173",
     credentials: true,
