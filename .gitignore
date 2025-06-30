@@ -7,12 +7,18 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Ignore frontend and backend build/deps folders
+frontend/node_modules/
+frontend/dist/
+backend/node_modules/
+
 node_modules
 dist
 dist-ssr
 *.local
 .env
 # Editor directories and files
+
 .vscode/*
 !.vscode/extensions.json
 .idea
