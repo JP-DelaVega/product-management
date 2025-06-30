@@ -5,7 +5,6 @@ import { connectDB } from "./config/db.js";
 import productRoutes from "./routes/product.route.js";
 import cors from "cors";
 
-console.log("test22");
 dotenv.config();
 
 const app = express();
@@ -29,12 +28,11 @@ app.use("/api/products", productRoutes);
 app.get("/api/health", (req, res) => {
   res.send("API is working");
 });
-
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+  app.use(express.static(path.join(__dirname, "frontend/dist")));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
   });
 }
 
