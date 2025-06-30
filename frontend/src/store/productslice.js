@@ -5,10 +5,17 @@ import {
 } from "@reduxjs/toolkit";
 
 // Fetch products with pagination
+
+const BASE_URL =
+  import.meta.env.MODE === "development"
+    ? "http://localhost:5000"
+    : "https://product-management-d8ctc7ecgpg6huf5.southeastasia-01.azurewebsites.net/";
+
+
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async ({ page, limit, searchQuery }) => {
-    let url = `http://localhost:5000/api/products?page=${page}&limit=${limit}`;
+    let url = `${BASE_URL}/api/products?page=${page}&limit=${limit}`;
     if (searchQuery) url += `&search=${encodeURIComponent(searchQuery)}`; // ✅ Prevent empty search
 
     const res = await fetch(url);
@@ -20,7 +27,7 @@ export const fetchProducts = createAsyncThunk(
 export const addProduct = createAsyncThunk(
   "products/addProduct",
   async (product) => {
-    const res = await fetch("http://localhost:5000/api/products", {
+    const res = await fetch(`${BASE_URL}/api/products`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(product),
@@ -33,7 +40,7 @@ export const addProduct = createAsyncThunk(
 export const deleteProduct = createAsyncThunk(
   "products/deleteProduct",
   async (productId) => {
-    await fetch(`http://localhost:5000/api/products/${productId}`, {
+    await fetch(`${BASE_URL}/api/products/${productId}`, {
       method: "DELETE",
     });
     return productId;
@@ -44,7 +51,7 @@ export const deleteProduct = createAsyncThunk(
 export const editProduct = createAsyncThunk(
   "products/editProduct",
   async ({ productId, updatedData }) => {
-    const res = await fetch(`http://localhost:5000/api/products/${productId}`, {
+    const res = await fetch(`${BASE_URL}/api/products/${productId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedData),
