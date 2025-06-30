@@ -1,7 +1,7 @@
 {
   "name": "productmanagement",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
   "dev": "nodemon backend/server.js",
   "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
