@@ -25,6 +25,9 @@ app.use(express.json());
 
 app.use("/api/products", productRoutes);
 
+app.get("/api/health", (req, res) => {
+  res.send("API is working");
+});
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "frontend/dist")));
 
