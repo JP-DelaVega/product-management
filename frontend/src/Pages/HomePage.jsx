@@ -13,7 +13,7 @@ import Pagination from "../components/Pagination";
 import SearchBar from "../components/SearchBar";
 
 console.log("this is homepag");
-
+console.log(import.meta.env.MODE);
 function HomePage() {
   const dispatch = useDispatch();
   const [notification, setNotification] = useState({

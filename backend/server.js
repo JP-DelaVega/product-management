@@ -23,18 +23,28 @@ app.use(
 
 app.use(express.json());
 
-app.use("/api/products", productRoutes);
+//app.use("/api/products", productRoutes);
+app.use("/api/products", (req, res, next) => {
+  console.log(`API called: ${req.method} ${req.originalUrl}`);
+  next();
+}, productRoutes);
 
 app.get("/api/health", (req, res) => {
   res.send("API is working");
 });
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "frontend/dist")));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-  });
-}
+app.get("/api/env", (req, res) => {
+  res.json({ NODE_ENV: process.env.NODE_ENV, PORT: process.env.PORT });
+});
+
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "frontend/dist")));
+
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+//   });
+// }
+
 
 app.listen(PORT, () => {
   connectDB();
