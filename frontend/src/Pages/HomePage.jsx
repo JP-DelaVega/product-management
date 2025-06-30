@@ -12,6 +12,8 @@ import Modal from "../components/Modal"; // Make sure this is imported
 import Pagination from "../components/Pagination";
 import SearchBar from "../components/SearchBar";
 
+console.log("this is homepag");
+
 function HomePage() {
   const dispatch = useDispatch();
   const [notification, setNotification] = useState({
