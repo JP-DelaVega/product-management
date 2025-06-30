@@ -3,13 +3,23 @@ import dotenv from "dotenv";
 import path from "path";
 import { connectDB } from './config/db.js';
 import productRoutes from "./routes/product.route.js"
-
+import cors from "cors"
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve(); 
+
+app.use(
+  cors({
+    origin:
+      process.env.NODE_ENV === "development"
+        ? "https://product-management-d8ctc7ecgpg6huf5.southeastasia-01.azurewebsites.net/" // <-- Replace with your deployed frontend URL
+        : "http://localhost:5173",
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 
