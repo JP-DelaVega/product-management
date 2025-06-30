@@ -37,10 +37,6 @@ app.get("/api/health", (req, res) => {
   res.send("API is working");
 });
 
-app.get("/api/env", (req, res) => {
-  res.json({ NODE_ENV: process.env.NODE_ENV, PORT: process.env.PORT });
-});
-
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
   app.get("*", (req, res) => {
