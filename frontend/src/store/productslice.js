@@ -9,7 +9,7 @@ import {
 const BASE_URL =
   import.meta.env.MODE === "development"
     ? "http://localhost:5000"
-    : "https://product-management-d8ctc7ecgpg6huf5.southeastasia-01.azurewebsites.net";
+    : "product-management-test-hka7fsfac7dhbagj.canadacentral-01.azurewebsites.net";
 
 
 export const fetchProducts = createAsyncThunk(
