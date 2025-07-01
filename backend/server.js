@@ -32,7 +32,7 @@ app.use(
   },
   productRoutes
 );
-
+  
 app.get("/api/health", (req, res) => {
   res.send("API is working");
 });
