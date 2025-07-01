@@ -7,7 +7,7 @@ import {
 // Fetch products with pagination
 
 const BASE_URL =
-  import.meta.env.MODE === "development"
+  import.meta.env.MODE === "production"
     ? "http://localhost:5000"
     : "product-management-test-hka7fsfac7dhbagj.canadacentral-01.azurewebsites.net";
 
